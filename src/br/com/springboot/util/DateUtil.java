@@ -2,7 +2,7 @@
  * @author cleilton
  * File: DateUtil.java - Date: Sep 11, 2019
  */
-package br.com.awesome.util;
+package br.com.springboot.util;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
