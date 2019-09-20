@@ -12,6 +12,6 @@ import br.com.springboot.model.Student;
 
 public interface StudentRepository extends CrudRepository<Student, Long> {
 
-	public List<Student> findByName(String name);
+	public List<Student> findByNameIgnoreCaseContaining(String name);
 
 }
