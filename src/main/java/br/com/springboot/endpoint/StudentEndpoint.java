@@ -4,9 +4,12 @@
  */
 package br.com.springboot.endpoint;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.springboot.error.CustomErrorType;
 import br.com.springboot.error.ResourceNotFoundExcepetion;
 import br.com.springboot.model.Student;
 import br.com.springboot.repository.StudentRepository;
@@ -31,13 +33,11 @@ public class StudentEndpoint {
 		this.studentDAO = studentDAO;
 	}
 
-	// @RequestMapping(method = RequestMethod.GET, path = "/{students}")
 	@GetMapping
 	public ResponseEntity<?> listAll() {
 		return new ResponseEntity<>(studentDAO.findAll(), HttpStatus.OK);
 	}
 
-	// @RequestMapping(method = RequestMethod.GET, path = "/{id}")
 	@GetMapping(path = "/{id}")
 	public ResponseEntity<?> getStudentById(@PathVariable("id") Long id) {
 		verifyIfStudentExists(id);
@@ -50,14 +50,13 @@ public class StudentEndpoint {
 		return new ResponseEntity<>(studentDAO.findByNameIgnoreCaseContaining(name), HttpStatus.OK);
 	}
 
-	// @RequestMapping(method = RequestMethod.POST)
 	@PostMapping
-	public ResponseEntity<?> save(@RequestBody Student student) {
+	@Transactional(rollbackFor = Exception.class)
+	public ResponseEntity<?> save(@Valid @RequestBody Student student) {
 
 		return new ResponseEntity<>(studentDAO.save(student), HttpStatus.CREATED);
 	}
 
-	// @RequestMapping(method = RequestMethod.DELETE)
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		verifyIfStudentExists(id);
@@ -66,7 +65,6 @@ public class StudentEndpoint {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
-	// @RequestMapping(method = RequestMethod.PUT)
 	@PutMapping
 	public ResponseEntity<?> update(@RequestBody Student student) {
 		verifyIfStudentExists(student.getId());

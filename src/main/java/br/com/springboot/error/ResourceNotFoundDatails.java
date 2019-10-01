@@ -6,48 +6,23 @@ package br.com.springboot.error;
 
 import javax.annotation.Generated;
 
-public class ResourceNotFoundDatails {
-
-	private String title;
-	private int status;
-	private String datails;
-	private long timestamp;
-	private String developerMessage;
+public class ResourceNotFoundDatails extends ErrorDetails {
 
 	@Generated("SparkTools")
 	private ResourceNotFoundDatails(Builder resourceNotFoundDatailsBuilder) {
-		this.title = resourceNotFoundDatailsBuilder.title;
-		this.status = resourceNotFoundDatailsBuilder.status;
-		this.datails = resourceNotFoundDatailsBuilder.datails;
-		this.timestamp = resourceNotFoundDatailsBuilder.timestamp;
-		this.developerMessage = resourceNotFoundDatailsBuilder.developerMessage;
+		this.setTitle(resourceNotFoundDatailsBuilder.title);
+		this.setStatus(resourceNotFoundDatailsBuilder.status);
+		this.setDetails(resourceNotFoundDatailsBuilder.details);
+		this.setTimestamp(resourceNotFoundDatailsBuilder.timestamp);
+		this.setDeveloperMessage(resourceNotFoundDatailsBuilder.developerMessage);
 	}
 
 	private ResourceNotFoundDatails() {
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public String getDatails() {
-		return datails;
-	}
-
-	public long getTimestamp() {
-		return timestamp;
-	}
-
-	public String getDeveloperMessage() {
-		return developerMessage;
-	}
-
 	@Generated("SparkTools")
-	public static Builder Builder() {
+
+	public static Builder newBuilder() {
 		return new Builder();
 	}
 
@@ -55,14 +30,14 @@ public class ResourceNotFoundDatails {
 	public static final class Builder {
 		private String title;
 		private int status;
-		private String datails;
+		private String details;
 		private long timestamp;
 		private String developerMessage;
 
 		private Builder() {
 		}
 
-		public ResourceNotFoundDatails newBuilder() {
+		public ResourceNotFoundDatails build() {
 			return new ResourceNotFoundDatails(this);
 		}
 
@@ -76,8 +51,8 @@ public class ResourceNotFoundDatails {
 			return this;
 		}
 
-		public Builder Datails(String datails) {
-			this.datails = datails;
+		public Builder Details(String datails) {
+			this.details = datails;
 			return this;
 		}
 
