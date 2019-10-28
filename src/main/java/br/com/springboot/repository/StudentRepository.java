@@ -15,5 +15,5 @@ import br.com.springboot.model.Student;
 //	public List<Student> findByNameIgnoreCaseContaining(String name);
 //}
 public interface StudentRepository extends PagingAndSortingRepository<Student, Long> {
-	public List<Student> findByNameIgnoreCaseContaining(String name);
+	List<Student> findByNameIgnoreCaseContaining(String name);
 }
