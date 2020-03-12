@@ -33,4 +33,9 @@ public class Student extends AbstractEntity {
 		this.email = email;
 	}
 
+	@Override
+	public String toString() {
+		return "Student [name=" + name + ", email=" + email + "]";
+	}
+
 }
