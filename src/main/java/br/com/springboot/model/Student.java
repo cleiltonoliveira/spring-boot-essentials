@@ -4,18 +4,31 @@
  */
 package br.com.springboot.model;
 
-import javax.persistence.Entity;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.persistence.Entity;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
 
 @Entity
 public class Student extends AbstractEntity {
-	@NotEmpty
-	private String name;
+
 	@NotEmpty(message = "O campo nome do estudante é obrigatório")
-	@Email
+	private String name;
+
+	@NotEmpty
+	@Email(message = "Digite um email válido")
 	private String email;
+
+	public Student(@NotEmpty(message = "O campo nome do estudante é obrigatório") String name,
+			@NotEmpty @Email(message = "Digite um email válido") String email) {
+		this.name = name;
+		this.email = email;
+	}
+
+	public Student() {
+
+	}
 
 	public String getName() {
 		return name;
