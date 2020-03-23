@@ -21,7 +21,9 @@ public class JavaSpringClientTest {
 			student.setName("Cleilton");
 			student.setEmail("Cleilton");
 
-			System.out.println(clientDAO.save(student));
+			// System.out.println(clientDAO.save(student));
+
+			System.out.println(clientDAO.findById(-1));
 
 		} catch (Exception e) {
 			e.printStackTrace();

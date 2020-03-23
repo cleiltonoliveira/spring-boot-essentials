@@ -80,4 +80,12 @@ public class ValidationErrorDetails extends ErrorDetails {
 			return this;
 		}
 	}
+
+	public String getField() {
+		return field;
+	}
+
+	public String getFieldMessage() {
+		return fieldMessage;
+	}
 }

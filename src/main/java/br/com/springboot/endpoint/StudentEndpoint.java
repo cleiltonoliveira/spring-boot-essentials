@@ -53,6 +53,8 @@ public class StudentEndpoint {
 		verifyIfStudentExists(id);
 		Optional<Student> student = studentDAO.findById(id);
 
+		System.out.println(student);
+
 		return new ResponseEntity<>(student, HttpStatus.OK);
 	}
 
@@ -85,7 +87,8 @@ public class StudentEndpoint {
 	}
 
 	private void verifyIfStudentExists(Long id) {
-		if (studentDAO.findById(id) == null)
+		if (studentDAO.findById(id).equals(Optional.empty()))
+
 			throw new ResourceNotFoundExcepetion("Student not found for ID: " + id);
 	}
 }
