@@ -14,13 +14,16 @@
 				<configuration>
 
 
-					<!-- <source>1.8</source> <target>1.8</target> -->
+					<source>1.8</source> <target>1.8</target>
+					<executable>true</executable>
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>demosbe</finalName>
 	</build>
 
 	<packaging>jar</packaging>
+
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
